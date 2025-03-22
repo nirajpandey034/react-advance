@@ -1,0 +1,6 @@
+{
+  "greeting": "مرحبا، أهلا بك!",
+  "language_switcher": "تغيير اللغة",
+  "description": "هذا هو تطبيق متعدد اللغات.",
+  "welcome_user": "مرحباً، {{name}}!"
+}

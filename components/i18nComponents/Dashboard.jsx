@@ -7,22 +7,33 @@ export default function Dashboard() {
 
   // Detect browser's default language and set it
   useEffect(() => {
-    const browserLang = navigator.language || navigator.userLanguage; // Get browser's language
-    const lang = browserLang.split('-')[0]; // Extract base language (e.g., 'en' from 'en-US')
+    const browserLang = navigator.language || navigator.userLanguage; // Get browser language
+    const lang = browserLang.split('-')[0]; // Extract base language
 
     // Supported languages
-    const availableLanguages = ['en', 'fr'];
+    const availableLanguages = ['en', 'fr', 'ar']; // Added 'ar' for Arabic (RTL)
 
     // Set language only if it's supported
     if (availableLanguages.includes(lang)) {
       i18n.changeLanguage(lang);
+      updateDirection(lang);
     } else {
       i18n.changeLanguage('en'); // Fallback to English
+      updateDirection('en');
     }
   }, []);
 
+  // Function to update direction based on language
+  const updateDirection = (lang) => {
+    const isRtl = ['ar', 'he', 'fa', 'ur'].includes(lang); // RTL languages
+    document.documentElement.setAttribute('dir', isRtl ? 'rtl' : 'ltr');
+    document.documentElement.setAttribute('lang', lang);
+  };
+
+  // Change language and update direction on button click
   const changeLanguage = (lang) => {
-    i18n.changeLanguage(lang); // Switch language manually
+    i18n.changeLanguage(lang);
+    updateDirection(lang);
   };
 
   return (
@@ -39,6 +50,12 @@ export default function Dashboard() {
           style={{ marginLeft: '10px' }}
         >
           🇫🇷 French
+        </button>
+        <button
+          onClick={() => changeLanguage('ar')}
+          style={{ marginLeft: '10px' }}
+        >
+          🕌 Arabic
         </button>
       </div>
     </div>
