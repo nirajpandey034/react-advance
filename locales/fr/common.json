@@ -1,0 +1,6 @@
+{
+  "greeting": "Bonjour, Bienvenue!",
+  "language_switcher": "Changer de langue",
+  "description": "Ceci est une application multilingue.",
+  "welcome_user": "Bienvenue, {{name}}!"
+}
